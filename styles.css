@@ -783,6 +783,11 @@ ul.ul-edu li .description p.institution {
   color: rgba(0,0,0,0.6);
 }
 
+ul.ul-edu li .description p.notes {
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.6);
+}
+
 /*************************************************
  *  People widget
  **************************************************/
@@ -2379,6 +2384,10 @@ body.dark,
 }
 
 .dark ul.ul-edu li .description p.institution {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark ul.ul-edu li .description p.notes {
   color: rgba(255, 255, 255, 0.6);
 }
 
