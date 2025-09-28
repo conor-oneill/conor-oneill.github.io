@@ -13,43 +13,162 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f1f1f1;
+            background-color: #f6fffe;
             color: #333;
             overflow-x: hidden;
+            /* Added padding to the top of the body to account for the fixed header */
+            padding-top: 80px; 
+            min-height: 100vh; /* Ensure body takes up full height for debugging */
         }
 
-        /* Header Styling */
-        
-
-        /*
-        header {
-            background-color: #2E4A87; /* Changed from #4C8BFF Vibrant blue to #2E4A87 Dark blue (footer) *
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
+        /* --- Floating Navigation Banner Styling --- */
+        .floating-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white; /* Non-transparent white background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it stays on top of other content */
+            padding: 10px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
         }
-        */
-         
+
+        .floating-nav .logo img {
+            height: 60px; /* Logo size */
+            width: auto;
+            display: block;
+        }
+
+        .floating-nav .center-text {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2E4A87; /* Dark blue for emphasis */
+            white-space: nowrap; /* Prevents wrapping on desktop */
+            margin: 0 20px;
+        }
+
+        .floating-nav .nav-menu {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .floating-nav .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Prevents wrapping */
+        }
+
+        .floating-nav .nav-menu a:hover {
+            color: #FF7F50; /* Coral on hover */
+        }
+
+        .floating-nav .contact-btn {
+            background-color: #FF7F50; 
+            color: white !important; 
+            padding: 8px 15px !important;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .floating-nav .contact-btn:hover {
+            background-color: #FF6347;
+            color: white !important;
+        }
+        /* --- End Floating Navigation Banner Styling --- */
+
+        /* Header Styling: Grid Layout and Professional Design */
         header {
-            background-image: url('img/header.jpg'); /* Replace with the path to your image */
-            background-size: cover;  /* Ensures the image covers the entire header area */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
+            background-color: #F7F9FC; /* Clean white background */
+            color: #333; /* Default text color */
+            padding: 60px 10% 40px; /* General padding, but content will be defined by the grid */
+            
+            /* NEW: Use CSS Grid for Asymmetrical Layout */
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns: 50% for text, 50% for illustration */
+            gap: 40px;
+            align-items: center; /* Vertically center content */
+            min-height: 350px; /* Ensure a minimum height for visual impact */
+            border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+        }
+
+        .header-content {
+            /* Container for the text and buttons */
+            padding-right: 20px;
         }
 
         header h1 {
-            font-size: 3.5em;
-            font-weight: 600;
+            font-size: 3.5em; 
+            font-weight: 700; 
+            color: #2E4A87; /* Highlight the main title with the brand blue */
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
         }
+        header h1 span {
+            color: #FF7F50; /* Highlight key words in coral */
+        }
+
         header p {
-            font-size: 1.3em;
-            font-weight: 300;
+            font-size: 1.25em; 
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 10px 0 30px;
+        }
+
+        .header-visual {
+            height: 100%;
+            background-image: url('./img/background.png'); 
+            background-size: cover; /* Changed from 'contain' to 'cover' */
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 300px; /* Ensure the visual has some height */
+            opacity: 0.8; /* Subtle transparency */
+        }
+
+        /* Specific adjustment for medium to large screens (desktop/landscape) */
+        @media (min-width: 769px) {
+            .header-visual {
+                /* This rule ONLY applies when the screen is 769px or wider */
+                min-height: 400px; 
+            }
+        }
+
+        /* Responsive adjustments for the new grid header */
+        @media (max-width: 768px) {
+            header {
+                grid-template-columns: 1fr; /* Stack columns on mobile */
+                padding: 40px 5%;
+            }
+            .header-visual {
+                order: -1; /* Place the image above the text on mobile */
+                min-height: 150px;
+                margin-bottom: 30px;
+            }
+            header h1 {
+                font-size: 2.5em;
+                text-align: center;
+            }
+            header p {
+                text-align: center;
+                font-size: 1.1em;
+            }
+            .header-content {
+                padding-right: 0;
+                text-align: center;
+            }
         }
         .cta-btn {
-            background-color: #FF7F50; /* Coral for playfulness */
+            background-color: #FF7F50; 
             color: white;
             padding: 15px 30px;
             border-radius: 25px;
@@ -62,6 +181,19 @@
         .cta-btn:hover {
             background-color: #FF6347;
             color: white;
+        }
+
+
+        .large-break {
+            /* The display: block is crucial to make the margin work */
+            display: block; 
+            
+            /* Add vertical space above and below the "break" element */
+            margin-top: 0.5em; /* 1.5 times the font size for a noticeable gap */
+            /* margin-bottom: 0.5em; */
+            
+            /* Ensure it has no content to display */
+            content: ""; 
         }
 
         /* Section Styling */
@@ -78,6 +210,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
+            margin-top: 30px; /* This adds 30px of space above the service cards */
         }
         .service-card {
             background-color: white;
@@ -91,18 +224,11 @@
             transform: translateY(-10px);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
-        /*
+        
         .service-card img {
+            height: 200px;
             max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        */
-        .service-card img {
-            /* width: 150px;     /* Fixed width */
-            height: 100px;    /* Fixed height */
-            max-width: 100%;
-            object-fit: cover; /* This will crop the image if necessary to fill the dimensions */
+            object-fit: cover; 
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -127,8 +253,8 @@
             margin-top: 60px;
         }
         .testimonial-card {
-            display: flex;            /* Use flexbox to align items horizontally */
-            align-items: center;      /* Vertically center the image and text */
+            display: flex;            
+            align-items: center;      
             background-color: #fff;
             padding: 20px;
             border-radius: 15px;
@@ -140,7 +266,7 @@
             width: 70px;
             height: 70px;
             margin-bottom: 15px;
-            margin-right: 20px;      /* Space between the image and text */
+            margin-right: 20px;      
         }
         .testimonial-card p {
             color: #333;
@@ -179,20 +305,20 @@
             font-size: 1.2em;
             color: #666;
             line-height: 1.6;
-            margin-bottom: 15px;  /* Adds space below each paragraph */
+            margin-bottom: 15px; 
         }
 
         /* Contact Section */
         .contact-section {
-            background-color: #f2f2f2;   /* Light grey background */
+            background-color: #f2f2f2; 
             padding: 40px 20px;
             text-align: center;
-            border-top: 5px solid #2E4A87; /* Blue border at the top */
+            border-top: 5px solid #2E4A87; 
         }
 
         .contact-section h2 {
             font-size: 2em;
-            color: #2E4A87;  /* Matching blue color for the heading */
+            color: #2E4A87; 
             margin-bottom: 20px;
         }
 
@@ -203,15 +329,14 @@
         }
 
         .contact-section .contact-button {
-            background-color: #FF7F50; /* Coral for playfulness */
-                    color: white;
-                    padding: 15px 30px;
-                    border-radius: 25px;
-                    text-decoration: none;
-                    font-size: 1.2em;
-                
-                    display: inline-block;
-                    transition: background-color 0.3s ease;
+            background-color: #FF7F50; 
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
         }
 
         .contact-section .contact-button:hover {
@@ -240,13 +365,12 @@
 
         /* Footer */
         footer {
-            background-color: #2E4A87; /* Dark blue */
+            background-color: #2E4A87; 
             color: white;
             text-align: center;
             padding: 20px;
             position: relative;
             bottom: 0;
-            /*width: 100%;*/
             margin: 0 auto;
             font-size: 1.1em;
         }
@@ -262,9 +386,54 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .floating-nav .center-text {
+                font-size: 1.1em;
+                margin: 0 10px;
+            }
+            .floating-nav .nav-menu {
+                gap: 10px;
+            }
+            .floating-nav .nav-menu a {
+                font-size: 0.9em;
+            }
+        }
+
         @media (max-width: 768px) {
             .services {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            /* Responsive adjustments for the floating nav on smaller screens */
+            .floating-nav {
+                padding: 10px 2%;
+            }
+            .floating-nav .logo img {
+                height: 50px; /* Smaller logo */
+            }
+            .floating-nav .center-text {
+                display: none; /* Hide center text on small screens to save space */
+            }
+            .floating-nav .nav-menu {
+                gap: 5px;
+            }
+            .floating-nav .nav-menu a:not(.contact-btn) {
+                display: none; /* Hide non-contact links on mobile */
+            }
+            .floating-nav .contact-btn {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+            
+            #about {
+              flex-direction: column;
+              text-align: center;
+              padding: 30px 5%;
+            }
+
+            #about img {
+              margin-right: 0;
+              margin-bottom: 20px;
             }
         }
 
@@ -276,51 +445,92 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        @media (max-width: 768px) {
-          #about {
-              flex-direction: column;
-              text-align: center;
-              padding: 30px 5%;
-          }
-
-          #about img {
-              margin-right: 0;
-              margin-bottom: 20px;
-          }
-        }
-
-
     </style>
 
 
-    <!-- Google Fonts -->    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-    <!-- favicon-->
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/icon.png">
 
 </head>
 <body>
 
-    <!-- Header Section -->
+    <nav class="floating-nav">
+        <div class="logo">
+            <img src="./img/logo_rounded.png" alt="conor.ai logo"> 
+        </div>
+        <div class="center-text">
+            Data, Analytics & AI
+        </div>
+        <div class="nav-menu">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="contact-btn">Contact</a>
+        </div>
+    </nav>
     <header>
-        <h1>conor.ai</h1>
-        <!-- <p>Turning Data into Business Insights & Growth</p>
-         -->
-        <p><i>Consulting, Contracting, and Advisory Services</i></p>
-        <p>Data Science | Artificial Intelligence | Business Intelligence | Analytics Strategy</p>
-        <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="cta-btn">Get in Touch</a>
+        <div class="header-content">
+            <h1>
+                 <span class="highlight">Effective</span> Solutions
+                <br>
+                for <span class="highlight">Modern</span> Challenges.
+            </h1> 
+            
+            <p>
+                Expert consulting, contracting, and advisory services.
+                <!-- <br> -->
+                <span class="large-break"></span>
+                Turn complex Data, Analytics, and AI challenges into high-value business solutions.
+            </p>
+            
+            <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="cta-btn">Discuss Opportunities Today</a>
+        </div>
+        
+        <div class="header-visual">
+            </div>
     </header>
 
-    <!-- Services Section -->
-    <section>
+    <section id="services"> 
         <h2>Services Offered</h2>
+        <p>We understand that everyone is at different stages of their Data, Analytics & AI journeys. 
+            <!-- <br> -->
+            <span class="large-break"></span>
+            Whether you're taking your first steps or have been blazing a trail, we meet you where you are and get you where you're going.
+        </p>
         <div class="services">
             <div class="service-card">
+                <!-- <img src="img/strategy.png" alt="Strategy and Governance Icon"> -->
+                <img src="img/arrow2.png" alt="Strategy and Governance Icon">
+                <h3>Strategy, Leadership, Structure, and Governance</h3>
+                <p>Lay or reinforce the groundwork for your organisation to effectively leverage Data and AI in the modern era.
+                </p>
+            </div>
+            
+            <div class="service-card">
+                <!-- <img src="img/ai.png" alt="Machine Learning Icon"> -->
+                <img src="img/ai2.png" alt="Machine Learning Icon">
+                <h3>AI & Machine Learning Solutions</h3>
+                <p>
+                    Deliver value effectively using AI and Machine Learning. 
+                    Tuned to your business needs, from ideation to delivery, from enterprise roll-out to niche solutions.
+                </p>
+            </div>
+            
+            <div class="service-card">
+                <!-- <img src="img/customer.png" alt="Data Science Icon"> -->
+                <img src="img/graph3.png" alt="Data Science Icon">
+                <h3>Data Science and Analytics</h3>
+                <p>
+                    Optimise your performance with advanced analytics. 
+                    Specialising in Marketing, E-commerce, and Contact Centre domains.
+                </p>
+            </div>
+            
+
+            <!-- <div class="service-card">
                 <img src="img/customer.png" alt="Marketing Analytics">
                 <h3>Customer & Marketing Analytics</h3>
                 <p>Predict customer behavior, optimise campaigns, and boost retention with advanced data science techniques.</p>
@@ -349,58 +559,88 @@
                 <img src="img/ai.png" alt="AI & Machine Learning Solutions">
                 <h3>AI & Machine Learning Solutions</h3>
                 <p>Implement AI systems to automate processes, enhance decision-making, and unlock business efficiencies.</p>
-            </div>
+            </div> -->
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonials"> 
         <h2>Selected Testimonials</h2>
         <div class="testimonial-card">
-            <img src="img/oli.jpeg" alt="Client 1">
+            <img src="img/rob.jpeg" alt="Client 1">
             <div>
-                <p>"Conor supported myself and the SEO team on many occasions to separate the signal from the noise. His careful analysis of our data, along with the attention he gave to fully understand what the data actually meant, led to strategic insights that were built upon to great commercial success."</p>
+                <p>"Conor was instrumental in bringing a high-value, LLM-based app from idea to production at BHP. 
+                    Despite being unfamiliar with the field of equipment maintenance, he rapidly grasped the domain and 
+                    helped design and deliver a clever solution balancing strategic goals with pragmatic realities.</p>
+                <p>Conor's strong attention to detail and value-bias through the delivery phase helped drive an efficient, 
+                    effective solution that will save us years of manual effort into the future. He was a pleasure to work with 
+                    and I value his guidance and insight in the practical application of AI."</p>
+                <cite>- Rob Holmes, Principal for New Technologies at BHP</cite>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <img src="img/oli.jpeg" alt="Client 2">
+            <div>
+                <p>"Conor supported myself and the SEO team on many occasions to separate the signal from the noise. 
+                    His careful analysis of our data, along with the attention he gave to fully understand what the data actually meant, 
+                    led to strategic insights that were built upon to great commercial success."</p>
                 <cite>- Oliver Braithwaite, Head of SEO at Compare The Market</cite>
             </div>
         </div>
         <div class="testimonial-card">
-            <img src="img/bex.jpeg" alt="Client 2">
+            <img src="img/bex.jpeg" alt="Client 3">
             <div>
-                <p>"Conor advised on and designed an audience segmentation study for Pacific. He is excellent at distilling down a vast list of requirements and expectations into the core objectives and prioritising accordingly. I loved the fact that Conor would take extra time to explain his approach to modelling and give context behind his decisions. On top of that he is a genuine delight to have around!"</p>
+                <p>"Conor advised on and designed an audience segmentation study for Pacific. 
+                    He is excellent at distilling down a vast list of requirements and expectations into the core objectives and prioritising accordingly. 
+                    I loved the fact that Conor would take extra time to explain his approach to modelling and give context behind his decisions. 
+                    On top of that he is a genuine delight to have around!"</p>
                 <cite>- Rebecca Alexander-Head, Director of Strategy and Insights at Seven West Media</cite>
             </div>
         </div>
-        <div class="testimonial-card">
-            <img src="img/aaron.jpeg" alt="Client 3">
-            <div>
-                <p>"Conor is truly a master at taking complex problems, working with the client to understand their underlying goal, and delivering a detailed solution that is easy to understand."</p>
-                <cite>- Aaron Hayes, CTO at Properti</cite>
-            </div>
-        </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
-        <img src="img/about.jpeg" alt="Your Name">
+        <img src="img/about.jpeg" alt="Conor">
         <div>
             <h2>Conor O'Neill</h2>
-            <h3>Founder | Principal Consultant</h3>
+            <h3>Executive Consultant - Data, Analytics & AI</h3>
+            <!-- <h3>Founder | Principal Consultant</h3> -->
             <p>
-                Conor is a seasoned data leader with over a decade of experience across financial services, e-commerce, travel, and media industries. Specialising in advanced analytics strategy and execution across marketing, product, and call centre domains, he helps organisations make data-driven decisions and deliver impactful, growth-driving solutions.
+                Conor is a seasoned data, analytics, and AI leader with over a decade of experience 
+                across financial services, e-commerce, travel, mining, and media industries. 
+                Specialising in advanced analytics strategy and execution across marketing, product, and call centre domains, 
+                he helps organisations make data-driven decisions and deliver impactful, growth-driving solutions.
             </p>
             <p>
-                Recognised as a Global Top 100 Data & Analytics Leader by Corinium in 2023, Conor is also a frequent speaker at technology leadership conferences and is committed to delivering actionable, real-world results for his clients.
+                Recognised as a Global Top 100 Data & Analytics Leader by Corinium in 2023, 
+                Conor is also a frequent speaker at technology leadership conferences and is committed to delivering actionable, 
+                real-world results for his clients.
             </p>
             <p><b>Connect on LinkedIn:</b> <a href="https://www.linkedin.com/in/conoroneill1/">linkedin.com/in/conoroneill1</a></p>
+            <!-- <p>
+                Conor is a seasoned data, analytics, and AI leader with over a decade of experience providing real value to 
+                organisations from multinationals to startups, across financial services, e-commerce, travel, mining, and media industries. 
+            </p>
+            <p>
+                
+                
+                Specialising in advanced analytics strategy and execution across marketing, product, and call centre domains, 
+                he helps organisations make data-driven decisions and deliver impactful, growth-driving solutions.
+            </p>
+            <p>
+                Recognised as a Global Top 100 Data & Analytics Leader by Corinium in 2023, Conor is also a frequent speaker 
+                at technology leadership conferences, with a clear and to-the-point communication style 
+                and is committed to delivering actionable, real-world results for his clients.
+            </p>
+            <p>
+                <b>Connect on LinkedIn:</b> <a href="https://www.linkedin.com/in/conoroneill1/">linkedin.com/in/conoroneill1</a>
+            </p> -->
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact"> 
         <h2>Contact Me</h2>
-        <p>Whether you're ready to take your data to the next level or just want to understand what's possible, let's talk!</p>
+        <p>Whether you're ready unlock value through data or just want to understand what's possible, let's talk!</p>
         
-        <!-- Make the button open email client -->
         <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="contact-button">Get in Touch</a>
     
         <div class="contact-info">
@@ -415,7 +655,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div>
             <p>&copy; 2025 Conor O'Neill</p>
