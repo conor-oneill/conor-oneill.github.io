@@ -326,7 +326,7 @@ a { color: inherit; text-decoration: none; }
     animation: scroll-marquee 25s linear infinite;
 }
 .brands-track img {
-    height: 42px; /* Increased from 32px to make them clearly visible */
+    height: 52px; /* Increased from 32px to make them clearly visible */
     width: auto;
     object-fit: contain;
     filter: opacity(100%);
@@ -355,7 +355,7 @@ a { color: inherit; text-decoration: none; }
 }
 .c-viewport {
     overflow: visible;
-    padding: 0 9%;
+    padding: 0;
 }
 .c-track {
     display: flex;
@@ -616,36 +616,21 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
     .nav-tagline-wrap { display:none; }
 }
 
+/* Desktop: show grid, hide carousel */
+.mobile-carousel { display: none; }
+.desktop-grid    { display: grid;  }
+
 @media (max-width:768px) {
     .nav-links a:not(.nav-cta) { display:none; }
     .about-inner { grid-template-columns:1fr; gap:28px; }
     .about-portrait { width:120px; height:120px; }
 
-    /* Convert grid systems into flex tracks for mobile carousels */
-    .ch-grid, .eng-grid {
-        display: flex;
-        transition: transform .52s cubic-bezier(.4,0,.2,1);
-        will-change: transform;
-    }
-    
-    .ch-grid .ch-card, .eng-grid .eng-card {
-        flex: 0 0 100%;
-    }
-
-    /* Target specific wrappers on mobile to hide structural grid overrides */
-    .mobile-carousel-container {
-        position: relative;
-        width: 100%;
-    }
-
-    /* Bring overlay arrows into tighter margins for mobile constraints */
-    .c-btn.prev { left: 1%; }
-    .c-btn.next { right: 1%; }
-    .c-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+    /* Mobile: hide grid, show carousel */
+    .desktop-grid    { display: none !important; }
+    .mobile-carousel { display: block; }
 }
 
 @media (max-width:640px) {
-    .c-viewport { padding:0 4%; }
     .c-card { flex-direction:column; gap:16px; padding:24px 20px; }
 }
     </style>
@@ -763,7 +748,7 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
         <div class="brands-track">
             <img src="./img/brand_logos/bhp.jpg" alt="BHP">
             <img src="./img/brand_logos/ctm.jpg" alt="Compare The Market">
-            <img src="./img/brand_logos/fctg.jpg" alt="Flight Centre Travel Group">
+            <img src="./img/brand_logos/fctg.jpeg" alt="Flight Centre Travel Group">
             <img src="./img/brand_logos/mastercard.jpg" alt="Mastercard">
             <img src="./img/brand_logos/clp.png" alt="CLP Power Hong Kong">
             <img src="./img/brand_logos/swm.jpg" alt="Seven West Media">
@@ -773,7 +758,17 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
         <div class="brands-track" aria-hidden="true">
             <img src="./img/brand_logos/bhp.jpg" alt="BHP">
             <img src="./img/brand_logos/ctm.jpg" alt="Compare The Market">
-            <img src="./img/brand_logos/fctg.jpg" alt="Flight Centre Travel Group">
+            <img src="./img/brand_logos/fctg.jpeg" alt="Flight Centre Travel Group">
+            <img src="./img/brand_logos/mastercard.jpg" alt="Mastercard">
+            <img src="./img/brand_logos/clp.png" alt="CLP Power Hong Kong">
+            <img src="./img/brand_logos/swm.jpg" alt="Seven West Media">
+            <img src="./img/brand_logos/decoded.jpg" alt="Decoded">
+        </div>
+        <!-- Track 3 (To avoid gap for wide screens) -->
+        <div class="brands-track" aria-hidden="true">
+            <img src="./img/brand_logos/bhp.jpg" alt="BHP">
+            <img src="./img/brand_logos/ctm.jpg" alt="Compare The Market">
+            <img src="./img/brand_logos/fctg.jpeg" alt="Flight Centre Travel Group">
             <img src="./img/brand_logos/mastercard.jpg" alt="Mastercard">
             <img src="./img/brand_logos/clp.png" alt="CLP Power Hong Kong">
             <img src="./img/brand_logos/swm.jpg" alt="Seven West Media">
@@ -795,13 +790,57 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
         </p>
     </div>
     
-    <div class="mobile-carousel-container c-wrapper">
+    <!-- Desktop grid (hidden on mobile) -->
+    <div class="ch-grid desktop-grid">
+        <div class="ch-card rv rv-1">
+            <div class="ch-icon"><i class="fas fa-chess"></i></div>
+            <h3>Strategy, Leadership &amp; Operating Models</h3>
+            <p>Getting data and AI to deliver value at an organisational level requires more than technology. It requires clarity of strategy, alignment of leadership, and operating models designed for how the work actually flows.</p>
+            <ul class="ch-list">
+                <li>Balancing capability building with near-term value delivery</li>
+                <li>Prioritising initiatives when everything feels urgent</li>
+                <li>Securing investment and maintaining executive sponsorship</li>
+                <li>Aligning business and technology teams around shared outcomes</li>
+                <li>Designing governance frameworks that enable rather than obstruct</li>
+                <li>Measuring ROI on data and AI investment</li>
+            </ul>
+        </div>
+        <div class="ch-card rv rv-2">
+            <div class="ch-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Analytics, Data Science &amp; Decision Making</h3>
+            <p>Analytics capability spans a wide spectrum, from foundational reporting through to advanced modelling. The challenge is building capability that organisations actually use, and turning insight into action.</p>
+            <ul class="ch-list">
+                <li>Enterprise reporting, BI, and analytics adoption</li>
+                <li>Measurement frameworks and experiment design</li>
+                <li>A/B testing and statistical analysis at scale</li>
+                <li>Predictive and prescriptive analytics</li>
+                <li>Marketing mix modelling and attribution</li>
+                <li>Customer segmentation and behavioural analytics</li>
+                <li>Translating analytical outputs into decisions and action</li>
+            </ul>
+        </div>
+        <div class="ch-card rv rv-3">
+            <div class="ch-icon"><i class="fas fa-robot"></i></div>
+            <h3>AI That Delivers Value Beyond Demos</h3>
+            <p>AI should create measurable business value while appropriately managing governance, risk, privacy, and security. The gap between a compelling proof of concept and a production system that earns trust is where most AI initiatives stall.</p>
+            <ul class="ch-list">
+                <li>Identifying high-value use cases and separating hype from opportunity</li>
+                <li>Building governance, risk, and oversight frameworks for AI</li>
+                <li>Machine learning — from model design to production deployment</li>
+                <li>Generative AI integration that solves real problems</li>
+                <li>Agentic AI: autonomous systems with appropriate human oversight</li>
+                <li>Scaling solutions that work in pilots to enterprise-wide value</li>
+                <li>Measuring and communicating AI's business impact</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mobile carousel (hidden on desktop) -->
+    <div class="c-wrapper mobile-carousel">
         <button class="c-btn prev" id="opp-prev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
         <div class="c-outer">
             <div class="c-viewport">
-                <div class="ch-grid" id="opp-track">
-
-                    <!-- CARD 1 -->
+                <div class="c-track" id="opp-track">
                     <div class="c-slide">
                         <div class="ch-card rv rv-1">
                             <div class="ch-icon"><i class="fas fa-chess"></i></div>
@@ -817,8 +856,6 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
                             </ul>
                         </div>
                     </div>
-
-                    <!-- CARD 2 -->
                     <div class="c-slide">
                         <div class="ch-card rv rv-2">
                             <div class="ch-icon"><i class="fas fa-chart-bar"></i></div>
@@ -835,8 +872,6 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
                             </ul>
                         </div>
                     </div>
-
-                    <!-- CARD 3 -->
                     <div class="c-slide">
                         <div class="ch-card rv rv-3">
                             <div class="ch-icon"><i class="fas fa-robot"></i></div>
@@ -853,7 +888,6 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -875,11 +909,46 @@ footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
         </p>
     </div>
 
-    <div class="mobile-carousel-container c-wrapper">
+    <!-- Desktop grid (hidden on mobile) -->
+    <div class="eng-grid desktop-grid">
+        <div class="eng-card rv rv-1">
+            <div class="eng-icon"><i class="fas fa-compass"></i></div>
+            <h3>Advisory &amp; Executive Support</h3>
+            <p>Strategic guidance, governance frameworks, roadmap development, and executive-level advisory that helps organisations make better decisions about data and AI investment and direction.</p>
+        </div>
+        <div class="eng-card rv rv-2">
+            <div class="eng-icon"><i class="fas fa-sitemap"></i></div>
+            <h3>Fractional Leadership</h3>
+            <p>Embedded leadership support for organisations that need senior data and AI capability without a permanent hire, covering strategy, team direction, and stakeholder engagement on a part-time or interim basis.</p>
+        </div>
+        <div class="eng-card rv rv-3">
+            <div class="eng-icon"><i class="fas fa-route"></i></div>
+            <h3>Delivery Leadership</h3>
+            <p>Leading initiatives from concept to implementation. Scoping, planning, managing stakeholders, and ensuring that projects deliver the outcomes they were designed for, not just technical outputs.</p>
+        </div>
+        <div class="eng-card rv rv-4">
+            <div class="eng-icon"><i class="fas fa-code"></i></div>
+            <h3>Hands-On Specialist Consulting</h3>
+            <p>Direct implementation, solution design, and coding across analytics, machine learning, generative AI, and agentic AI systems. Comfortable moving between architecture decisions and writing production code.</p>
+        </div>
+        <div class="eng-card rv rv-5">
+            <div class="eng-icon"><i class="fas fa-file-contract"></i></div>
+            <h3>Contract &amp; Project Engagements</h3>
+            <p>Available for fixed-term contracts, project-based engagements, and specialist support. Equally suited to short, focused interventions and longer-term embedded roles.</p>
+        </div>
+        <div class="eng-card rv rv-1" style="background:rgba(255,107,69,.08);border-color:rgba(255,107,69,.2);">
+            <div class="eng-icon"><i class="fas fa-arrows-up-down-left-right"></i></div>
+            <h3>From the Boardroom to the Build</h3>
+            <p>The best work often needs more than one lane. Many engagements span multiple modes — strategic one week, hands-on the next. No translation needed.</p>
+        </div>
+    </div>
+
+    <!-- Mobile carousel (hidden on desktop) -->
+    <div class="c-wrapper mobile-carousel">
         <button class="c-btn prev" id="eng-prev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
         <div class="c-outer">
             <div class="c-viewport">
-                <div class="eng-grid" id="eng-track">
+                <div class="c-track" id="eng-track">
                     <div class="c-slide">
                         <div class="eng-card rv rv-1">
                             <div class="eng-icon"><i class="fas fa-compass"></i></div>
@@ -1145,100 +1214,145 @@ const SLIDES = [
     }, { passive: true });
 })();
 
-/* ── Standard Responsive Mobile Carousels Engine ────────────────── */
-function setupResponsiveCarousel(config) {
-    const track = document.getElementById(config.trackId);
-    const dotsContainer = document.getElementById(config.dotsId);
-    const prevBtn = document.getElementById(config.prevId);
-    const nextBtn = document.getElementById(config.nextId);
-    const totalSlides = track.children.length;
-    
-    let currentIndex = 0;
-    let isMobile = window.innerWidth <= 768;
-    let dots = [];
+/* ── Opportunities Carousel (infinite, auto-scroll) ────────── */
+(function () {
+    const track  = document.getElementById('opp-track');
+    const dotsEl = document.getElementById('opp-dots');
+    const slides  = Array.from(track.querySelectorAll('.c-slide'));
+    const N       = slides.length;
 
-    function buildDots() {
-        dotsContainer.innerHTML = '';
-        dots = [];
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'c-dot' + (i === 0 ? ' on' : '');
-            dot.addEventListener('click', () => {
-                if(!isMobile) return;
-                currentIndex = i;
-                updateCarousel();
-            });
-            dotsContainer.appendChild(dot);
-            dots.push(dot);
-        }
+    /* Clone first and last for seamless infinite loop */
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone  = slides[N - 1].cloneNode(true);
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden',  'true');
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.children[0]);
+
+    /* Dots */
+    const dots = [];
+    for (let i = 0; i < N; i++) {
+        const d = document.createElement('div');
+        d.className = 'c-dot' + (i === 0 ? ' on' : '');
+        d.addEventListener('click', () => { goTo(i + 1); resetAuto(); });
+        dotsEl.appendChild(d);
+        dots.push(d);
     }
 
-    function updateCarousel() {
-        if (isMobile) {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('on', i === currentIndex));
-            prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
-            nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'flex';
-            dotsContainer.style.display = 'flex';
-        } else {
-            track.style.transform = 'none';
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-            dotsContainer.style.display = 'none';
-        }
+    let pos = 1, busy = false;
+
+    function setPos(p, animate) {
+        track.classList.toggle('snap', !animate);
+        track.style.transform = `translateX(-${p * 100}%)`;
+        if (!animate) { track.getBoundingClientRect(); track.classList.remove('snap'); }
     }
 
-    // Event Handlers
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalSlides - 1) { currentIndex++; updateCarousel(); }
-    });
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) { currentIndex--; updateCarousel(); }
+    function updateDots(p) {
+        const idx = ((p - 1) % N + N) % N;
+        dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    }
+
+    setPos(pos, false);
+    updateDots(pos);
+
+    function goTo(p, animate = true) {
+        if (busy) return;
+        busy = true; pos = p;
+        setPos(pos, animate);
+        updateDots(pos);
+    }
+
+    track.addEventListener('transitionend', () => {
+        busy = false;
+        if (pos === 0)     { setPos(N,     false); pos = N;     updateDots(pos); }
+        else if (pos === N + 1) { setPos(1, false); pos = 1;     updateDots(pos); }
     });
 
-    /* Touch Swiping support for mobile */
-    let touchStartX = 0;
-    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-        if (!isMobile) return;
-        const touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 45) {
-            if (diff > 0 && currentIndex < totalSlides - 1) { currentIndex++; } 
-            else if (diff < 0 && currentIndex > 0) { currentIndex--; }
-            updateCarousel();
-        }
+    function next() { goTo(pos + 1); }
+    function prev() { goTo(pos - 1); }
+
+    let timer = setInterval(next, 5500);
+    function resetAuto() { clearInterval(timer); timer = setInterval(next, 5500); }
+
+    document.getElementById('opp-next').addEventListener('click', () => { next(); resetAuto(); });
+    document.getElementById('opp-prev').addEventListener('click', () => { prev(); resetAuto(); });
+
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 44) { dx < 0 ? next() : prev(); resetAuto(); }
     }, { passive: true });
+})();
 
-    // Handle viewport changes dynamically
-    window.addEventListener('resize', () => {
-        const currentMode = window.innerWidth <= 768;
-        if (currentMode !== isMobile) {
-            isMobile = currentMode;
-            currentIndex = 0; // Reset index state gracefully
-            updateCarousel();
-        }
+/* ── Engagement Carousel (infinite, auto-scroll) ────────────── */
+(function () {
+    const track  = document.getElementById('eng-track');
+    const dotsEl = document.getElementById('eng-dots');
+    const slides  = Array.from(track.querySelectorAll('.c-slide'));
+    const N       = slides.length;
+
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone  = slides[N - 1].cloneNode(true);
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden',  'true');
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.children[0]);
+
+    const dots = [];
+    for (let i = 0; i < N; i++) {
+        const d = document.createElement('div');
+        d.className = 'c-dot' + (i === 0 ? ' on' : '');
+        d.addEventListener('click', () => { goTo(i + 1); resetAuto(); });
+        dotsEl.appendChild(d);
+        dots.push(d);
+    }
+
+    let pos = 1, busy = false;
+
+    function setPos(p, animate) {
+        track.classList.toggle('snap', !animate);
+        track.style.transform = `translateX(-${p * 100}%)`;
+        if (!animate) { track.getBoundingClientRect(); track.classList.remove('snap'); }
+    }
+
+    function updateDots(p) {
+        const idx = ((p - 1) % N + N) % N;
+        dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    }
+
+    setPos(pos, false);
+    updateDots(pos);
+
+    function goTo(p, animate = true) {
+        if (busy) return;
+        busy = true; pos = p;
+        setPos(pos, animate);
+        updateDots(pos);
+    }
+
+    track.addEventListener('transitionend', () => {
+        busy = false;
+        if (pos === 0)          { setPos(N, false); pos = N; updateDots(pos); }
+        else if (pos === N + 1) { setPos(1, false); pos = 1; updateDots(pos); }
     });
 
-    // Init
-    buildDots();
-    updateCarousel();
-}
+    function next() { goTo(pos + 1); }
+    function prev() { goTo(pos - 1); }
 
-// Initializing the two non-infinite grid carousels on mobile lifecycle
-setupResponsiveCarousel({
-    trackId: 'opp-track',
-    dotsId: 'opp-dots',
-    prevId: 'opp-prev',
-    nextId: 'opp-next'
-});
+    let timer = setInterval(next, 5500);
+    function resetAuto() { clearInterval(timer); timer = setInterval(next, 5500); }
 
-setupResponsiveCarousel({
-    trackId: 'eng-track',
-    dotsId: 'eng-dots',
-    prevId: 'eng-prev',
-    nextId: 'eng-next'
-});
+    document.getElementById('eng-next').addEventListener('click', () => { next(); resetAuto(); });
+    document.getElementById('eng-prev').addEventListener('click', () => { prev(); resetAuto(); });
+
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 44) { dx < 0 ? next() : prev(); resetAuto(); }
+    }, { passive: true });
+})();
 
 /* ── Nav scroll shadow ────────────────────── */
 const nav = document.getElementById('main-nav');
