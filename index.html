@@ -3,663 +3,1253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Data science consulting, contracting, and advisory services for marketing, e-commerce, strategy, and more">
-    <title>conor.ai | Data Science Services</title>
-    <style>
-        /* Resetting some default styles */
-        body, h1, h2, h3, p {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f6fffe;
-            color: #333;
-            overflow-x: hidden;
-            /* Added padding to the top of the body to account for the fixed header */
-            padding-top: 80px; 
-            min-height: 100vh; /* Ensure body takes up full height for debugging */
-        }
-
-        /* --- Floating Navigation Banner Styling --- */
-        .floating-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white; /* Non-transparent white background */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* Ensure it stays on top of other content */
-            padding: 10px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box; /* Include padding in the element's total width and height */
-        }
-
-        .floating-nav .logo img {
-            height: 60px; /* Logo size */
-            width: auto;
-            display: block;
-        }
-
-        .floating-nav .center-text {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #2E4A87; /* Dark blue for emphasis */
-            white-space: nowrap; /* Prevents wrapping on desktop */
-            margin: 0 20px;
-        }
-
-        .floating-nav .nav-menu {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .floating-nav .nav-menu a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 0;
-            transition: color 0.3s ease;
-            white-space: nowrap; /* Prevents wrapping */
-        }
-
-        .floating-nav .nav-menu a:hover {
-            color: #FF7F50; /* Coral on hover */
-        }
-
-        .floating-nav .contact-btn {
-            background-color: #FF7F50; 
-            color: white !important; 
-            padding: 8px 15px !important;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .floating-nav .contact-btn:hover {
-            background-color: #FF6347;
-            color: white !important;
-        }
-        /* --- End Floating Navigation Banner Styling --- */
-
-        /* Header Styling: Grid Layout and Professional Design */
-        header {
-            background-color: #F7F9FC; /* Clean white background */
-            color: #333; /* Default text color */
-            padding: 60px 10% 40px; /* General padding, but content will be defined by the grid */
-            
-            /* NEW: Use CSS Grid for Asymmetrical Layout */
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns: 50% for text, 50% for illustration */
-            gap: 40px;
-            align-items: center; /* Vertically center content */
-            min-height: 350px; /* Ensure a minimum height for visual impact */
-            border-bottom: 1px solid #e0e0e0; /* Subtle separator */
-        }
-
-        .header-content {
-            /* Container for the text and buttons */
-            padding-right: 20px;
-        }
-
-        header h1 {
-            font-size: 3.5em; 
-            font-weight: 700; 
-            color: #2E4A87; /* Highlight the main title with the brand blue */
-            margin-bottom: 0.5rem;
-            line-height: 1.1;
-        }
-        header h1 span {
-            color: #FF7F50; /* Highlight key words in coral */
-        }
-
-        header p {
-            font-size: 1.25em; 
-            font-weight: 400;
-            line-height: 1.6;
-            margin: 10px 0 30px;
-        }
-
-        .header-visual {
-            height: 100%;
-            background-image: url('./img/background.png'); 
-            background-size: cover; /* Changed from 'contain' to 'cover' */
-            background-repeat: no-repeat;
-            background-position: center;
-            min-height: 300px; /* Ensure the visual has some height */
-            opacity: 0.8; /* Subtle transparency */
-        }
-
-        /* Specific adjustment for medium to large screens (desktop/landscape) */
-        @media (min-width: 769px) {
-            .header-visual {
-                /* This rule ONLY applies when the screen is 769px or wider */
-                min-height: 400px; 
-            }
-        }
-
-        /* Responsive adjustments for the new grid header */
-        @media (max-width: 768px) {
-            header {
-                grid-template-columns: 1fr; /* Stack columns on mobile */
-                padding: 40px 5%;
-            }
-            .header-visual {
-                order: -1; /* Place the image above the text on mobile */
-                min-height: 150px;
-                margin-bottom: 30px;
-            }
-            header h1 {
-                font-size: 2.5em;
-                text-align: center;
-            }
-            header p {
-                text-align: center;
-                font-size: 1.1em;
-            }
-            .header-content {
-                padding-right: 0;
-                text-align: center;
-            }
-        }
-        .cta-btn {
-            background-color: #FF7F50; 
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin-top: 20px;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        .cta-btn:hover {
-            background-color: #FF6347;
-            color: white;
-        }
-
-
-        .large-break {
-            /* The display: block is crucial to make the margin work */
-            display: block; 
-            
-            /* Add vertical space above and below the "break" element */
-            margin-top: 0.5em; /* 1.5 times the font size for a noticeable gap */
-            /* margin-bottom: 0.5em; */
-            
-            /* Ensure it has no content to display */
-            content: ""; 
-        }
-
-        /* Section Styling */
-        section {
-            padding: 60px 10%;
-            margin: 0;
-        }
-        section h2 {
-            margin-bottom: 10px;
-        }
-
-        /* Services Grid */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 30px; /* This adds 30px of space above the service cards */
-        }
-        .service-card {
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-card img {
-            height: 200px;
-            max-width: 100%;
-            object-fit: cover; 
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .service-card h3 {
-            color: #333;
-            font-size: 1.7em;
-            font-weight: 500;
-            margin-top: 15px;
-        }
-        .service-card p {
-            color: #666;
-            font-size: 1.1em;
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background-color: #F5F7FF; /* Light blue */
-            padding: 50px 10%;
-            border-radius: 20px;
-            margin-top: 60px;
-        }
-        .testimonial-card {
-            display: flex;            
-            align-items: center;      
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 25px;
-        }
-        .testimonial-card img {
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            margin-bottom: 15px;
-            margin-right: 20px;      
-        }
-        .testimonial-card p {
-            color: #333;
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-        .testimonial-card cite {
-            font-style: italic;
-            color: #777;
-        }
-
-        /* About Section */
-        #about {
-            background-color: #fff;
-            padding: 50px 10%;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        #about img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 30px;
-        }
-        #about h2 {
-            font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        #about p {
-            font-size: 1.2em;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px; 
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background-color: #f2f2f2; 
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 5px solid #2E4A87; 
-        }
-
-        .contact-section h2 {
-            font-size: 2em;
-            color: #2E4A87; 
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .contact-section .contact-button {
-            background-color: #FF7F50; 
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact-section .contact-button:hover {
-            background-color: #FF6347;
-            color: white;
-        }
-
-
-        .contact-section .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .contact-section .contact-info div {
-            text-align: center;
-        }
-
-        .contact-section .contact-info i {
-            font-size: 2em;
-            color: #2E4A87;
-            margin-bottom: 10px;
-        }
-
-
-        /* Footer */
-        footer {
-            background-color: #2E4A87; 
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            bottom: 0;
-            margin: 0 auto;
-            font-size: 1.1em;
-        }
-
-        /* Links */
-        a {
-            text-decoration: none;
-            color: #4C8BFF;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #FF7F50;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .floating-nav .center-text {
-                font-size: 1.1em;
-                margin: 0 10px;
-            }
-            .floating-nav .nav-menu {
-                gap: 10px;
-            }
-            .floating-nav .nav-menu a {
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .services {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            /* Responsive adjustments for the floating nav on smaller screens */
-            .floating-nav {
-                padding: 10px 2%;
-            }
-            .floating-nav .logo img {
-                height: 50px; /* Smaller logo */
-            }
-            .floating-nav .center-text {
-                display: none; /* Hide center text on small screens to save space */
-            }
-            .floating-nav .nav-menu {
-                gap: 5px;
-            }
-            .floating-nav .nav-menu a:not(.contact-btn) {
-                display: none; /* Hide non-contact links on mobile */
-            }
-            .floating-nav .contact-btn {
-                padding: 5px 10px;
-                font-size: 0.9em;
-            }
-            
-            #about {
-              flex-direction: column;
-              text-align: center;
-              padding: 30px 5%;
-            }
-
-            #about img {
-              margin-right: 0;
-              margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2.5em;
-            }
-            .services {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
+    <meta name="description" content="Data, Analytics & AI advisory, leadership, and hands-on consulting. Conor O'Neill helps organisations turn complex data and AI challenges into real business outcomes.">
+    <title>conor.ai | Data, Analytics & AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/icon.png">
+    <style>
+/* ─────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────── */
+:root {
+    --navy:        #1a2c52;
+    --navy-deep:   #111e3a;
+    --navy-mid:    #243660;
+    --coral:       #FF6B45;
+    --coral-hover: #e05530;
+    --coral-light: #FF8A6A;
+    --coral-pale:  #fff2ee;
+    --slate:       #4a5568;
+    --slate-light: #718096;
+    --off-white:   #f8f9fc;
+    --white:       #ffffff;
+    --border:      rgba(26,44,82,0.10);
+    --border-lt:   rgba(26,44,82,0.06);
+    --fd: 'DM Serif Display', Georgia, serif;
+    --fb: 'DM Sans', system-ui, sans-serif;
+    --nav-h: 72px;
+    --sp: clamp(64px,8vw,104px) clamp(20px,8%,120px);
+}
 
+/* ─────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--fb);
+    background: var(--off-white);
+    color: var(--navy);
+    overflow-x: hidden;
+    padding-top: var(--nav-h);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-h);
+
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-lt);
+
+    z-index: 100;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+
+    padding: 0 clamp(20px,5%,60px);
+
+    transition: box-shadow .3s;
+}
+
+.nav.scrolled {
+    box-shadow: 0 4px 24px rgba(26,44,82,.08);
+}
+
+/* LEFT COLUMN */
+
+.nav-logo-wrap {
+    flex: 0 0 auto;
+}
+
+.nav-logo {
+    display: block;
+    flex-shrink: 0;
+}
+
+.nav-logo img {
+    height: 48px;
+    width: auto;
+    min-width: 170px;
+    object-fit: contain;
+    display: block;
+}
+
+/* CENTRE COLUMN */
+
+.nav-tagline-wrap {
+    justify-self: center;
+    overflow: hidden;
+}
+.nav-tagline {
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--navy);
+    white-space: nowrap;
+}
+
+.nav-dot {
+    color: var(--coral);
+    font-weight: 900;
+}
+
+/* RIGHT COLUMN */
+
+.nav-links {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: .9rem;
+    font-weight: 500;
+    transition: color .2s;
+}
+
+.nav-links a:hover {
+    color: var(--coral);
+}
+
+.nav-cta {
+    background: var(--coral);
+    color: #fff !important;
+    padding: 9px 20px;
+    border-radius: 50px;
+    font-size: .875rem;
+    font-weight: 600;
+    transition: background .2s, transform .15s;
+}
+
+.nav-cta:hover {
+    background: var(--coral-hover) !important;
+    transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+.hero {
+    background: var(--navy-deep);
+    min-height: calc(100svh - var(--nav-h));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: var(--sp);
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+}
+/* Animated SVG canvas */
+.hero-bg {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.hero-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hg { stroke: rgba(255,255,255,.035); stroke-width:1; fill:none; }
+.hc {
+    stroke: rgba(255,255,255,.055); stroke-width:1;
+    stroke-dasharray: 5 9;
+    animation: hdash 22s linear infinite;
+}
+.hc2 { animation-duration:30s; animation-direction:reverse; }
+.hn { fill: rgba(255,107,69,.18); }
+.hp {
+    fill:none; stroke:rgba(255,107,69,.28); stroke-width:1.5;
+    animation: hpulse 3.2s ease-out infinite;
+}
+.hp2 { animation-delay:.9s; }
+.hp3 { animation-delay:1.8s; }
+.hfd { animation: hfloat 7s ease-in-out infinite; }
+.hfd:nth-child(2){ animation-duration:9s; animation-delay:1.2s; }
+.hfd:nth-child(3){ animation-duration:6s; animation-delay:2.8s; }
+@keyframes hdash  { to { stroke-dashoffset: -220; } }
+@keyframes hpulse { 0%{r:0;opacity:1} 100%{r:56;opacity:0} }
+@keyframes hfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+.hero-content { position:relative; z-index:2; }
+.hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,107,69,.14);
+    border: 1px solid rgba(255,107,69,.3);
+    border-radius: 50px;
+    padding: 5px 14px 5px 10px;
+    font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color: var(--coral-light);
+    margin-bottom: 24px;
+}
+.hero-dot {
+    width:6px; height:6px; border-radius:50%; background:var(--coral);
+    animation: blink 2.2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero h1 {
+    font-family: var(--fd);
+    font-size: clamp(2.2rem,4.2vw,3.6rem);
+    line-height: 1.13; color:#fff;
+    margin-bottom: 22px;
+}
+.hero h1 em { font-style:italic; color:var(--coral-light); }
+.hero-sub {
+    font-size: clamp(.95rem,1.2vw,1.1rem);
+    color: rgba(255,255,255,.7);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 500px;
+}
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+
+/* Buttons */
+.btn-primary {
+    background:var(--coral); color:#fff;
+    padding:13px 26px; border-radius:50px;
+    font-size:.95rem; font-weight:600;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background:var(--coral-hover); transform:translateY(-2px); }
+.btn-ghost {
+    border:1px solid rgba(255,255,255,.25); color:rgba(255,255,255,.85);
+    padding:13px 26px; border-radius:50px;
+    font-size:.95rem; font-weight:500;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-ghost:hover { border-color:rgba(255,255,255,.6); color:#fff; transform:translateY(-2px); }
+.btn-outline {
+    border:1.5px solid var(--coral); color:var(--coral);
+    background: transparent;
+    padding:13px 26px; border-radius:50px;
+    font-size:.95rem; font-weight:600;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: background .2s, color .2s, transform .15s;
+}
+.btn-outline:hover { background:var(--coral); color:#fff; transform:translateY(-2px); }
+
+/* Hero right column */
+.hero-visual { position:relative; z-index:2; }
+.hero-cards { display:flex; flex-direction:column; gap:14px; }
+.hcard {
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:16px; padding:20px 24px;
+    backdrop-filter: blur(8px);
+    animation: hslide .65s ease backwards;
+}
+.hcard:nth-child(1){ animation-delay:.1s; }
+.hcard:nth-child(2){ animation-delay:.25s; }
+.hcard:nth-child(3){ animation-delay:.4s; }
+@keyframes hslide { from{opacity:0;transform:translateX(22px)} to{opacity:1;transform:none} }
+.hcard-lbl { font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.38); margin-bottom:5px; }
+.hcard-val { font-family:var(--fd); font-size:1.45rem; color:#fff; line-height:1.2; margin-bottom:4px; }
+.hcard-sub { font-size:.82rem; color:rgba(255,255,255,.52); line-height:1.5; }
+.hcard-accent { color:var(--coral-light); }
+
+/* ─────────────────────────────────────────────
+   SECTION HELPERS
+───────────────────────────────────────────── */
+.section-lbl {
+    display:inline-block;
+    font-size:.7rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:12px;
+}
+.section-title {
+    font-family:var(--fd);
+    font-size: clamp(1.9rem,2.8vw,2.7rem);
+    line-height:1.2; color:var(--navy);
+    margin-bottom:14px;
+}
+.section-lead {
+    font-size:1.05rem; color:var(--slate); line-height:1.8; max-width:640px;
+}
+
+/* ─────────────────────────────────────────────
+   INDUSTRY LOGOS STRIP (PERFECT SEAMLESS LOOP)
+───────────────────────────────────────────── */
+.brands { 
+    background: var(--white); 
+    padding: 40px 0; /* Increased vertical breathing room */
+    border-top: 1px solid var(--border-lt); 
+    border-bottom: 1px solid var(--border-lt); 
+    overflow: hidden;
+    position: relative;
+}
+.brands-lbl { 
+    text-align: center; 
+    font-size: .68rem; 
+    font-weight: 700; 
+    letter-spacing: .14em; 
+    text-transform: uppercase; 
+    color: var(--slate-light); 
+    margin-bottom: 28px; 
+}
+.brands-marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.brands-track {
+    display: flex;
+    align-items: center;
+    /* This creates identical spacing between every element, including track gaps */
+    gap: 80px; 
+    padding-right: 80px; 
+    flex-shrink: 0;
+    /* Let the track's natural content width drive the size, ensuring identical clones */
+    width: max-content; 
+    animation: scroll-marquee 25s linear infinite;
+}
+.brands-track img {
+    height: 42px; /* Increased from 32px to make them clearly visible */
+    width: auto;
+    object-fit: contain;
+    filter: opacity(100%);
+    transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+/* Loop Animation Logic: Pure transform on max-content width handles the tracking */
+@keyframes scroll-marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   CAROUSEL GENERAL STRUCTURE OVERLAYS
+───────────────────────────────────────────── */
+.c-wrapper {
+    position: relative;
+    width: 100%;
+}
+.c-outer {
+    overflow: hidden;
+}
+.c-viewport {
+    overflow: visible;
+    padding: 0 9%;
+}
+.c-track {
+    display: flex;
+    transition: transform .52s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+}
+.c-track.snap { transition: none; }
+
+.c-slide {
+    flex: 0 0 100%;
+    padding: 0 10px;
+}
+
+/* OVERLAY CONTROLS (Common to all systems now) */
+.c-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--navy);
+    box-shadow: 0 4px 14px rgba(26,44,82,0.12);
+    z-index: 10;
+    transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.c-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+.c-btn.prev { left: 2.5%; }
+.c-btn.next { right: 2.5%; }
+.c-btn:active { transform: translateY(-50%) scale(0.95); }
+
+/* Dark layouts get specific button adjustments for high visibility */
+.engagement .c-btn {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    color: #fff;
+}
+.engagement .c-btn:hover {
+    background: var(--white);
+    color: var(--navy-deep);
+    border-color: var(--white);
+}
+
+.c-dots { display:flex; gap:8px; justify-content:center; margin-top:28px; }
+.c-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:var(--border); cursor:pointer;
+    transition: background .2s, transform .2s;
+}
+.c-dot.on { background:var(--coral); transform:scale(1.35); }
+.engagement .c-dot { background: rgba(255,255,255,0.2); }
+.engagement .c-dot.on { background: var(--coral-light); }
+
+/* ─────────────────────────────────────────────
+   OPPORTUNITIES
+───────────────────────────────────────────── */
+.opportunities { background:var(--off-white); padding:var(--sp); }
+.opportunities-intro { margin-bottom:52px; }
+.ch-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+}
+.ch-card {
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:20px; padding:32px 28px;
+    transition: transform .2s, box-shadow .2s;
+    position:relative; overflow:hidden;
+    height: 100%;
+}
+.ch-card::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--coral), var(--coral-light));
+    transform:scaleX(0); transform-origin:left;
+    transition: transform .35s;
+}
+.ch-card:hover { transform:translateY(-5px); box-shadow:0 14px 44px rgba(26,44,82,.09); }
+.ch-card:hover::after { transform:scaleX(1); }
+.ch-icon {
+    width:44px; height:44px; border-radius:12px;
+    background:var(--coral-pale);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; color:var(--coral);
+    margin-bottom:18px;
+}
+.ch-card h3 { font-family:var(--fd); font-size:1.2rem; color:var(--navy); margin-bottom:12px; line-height:1.25; }
+.ch-card p { font-size:.9rem; color:var(--slate); line-height:1.7; margin-bottom:14px; }
+.ch-list { list-style:none; }
+.ch-list li {
+    font-size:.83rem; color:var(--slate-light); padding:5px 0;
+    border-top:1px solid var(--border-lt);
+    display:flex; align-items:flex-start; gap:8px; line-height:1.5;
+}
+.ch-list li::before { content:'→'; color:var(--coral); flex-shrink:0; margin-top:1px; }
+
+/* ─────────────────────────────────────────────
+   ENGAGEMENT MODELS
+───────────────────────────────────────────── */
+.engagement { background:var(--navy-deep); padding:var(--sp); }
+.engagement .section-lbl  { color:var(--coral-light); }
+.engagement .section-title { color:#fff; }
+.engagement .section-lead  { color:rgba(255,255,255,.62); }
+.engagement-intro { margin-bottom:48px; }
+.eng-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+}
+.eng-card {
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:18px; padding:28px 24px;
+    transition: background .25s, transform .2s;
+    height: 100%;
+}
+.eng-card:hover { background:rgba(255,255,255,.09); transform:translateY(-4px); }
+.eng-icon {
+    font-size:1.4rem; color:var(--coral); margin-bottom:14px;
+}
+.eng-card h3 { font-size:1rem; font-weight:600; color:#fff; margin-bottom:10px; line-height:1.3; }
+.eng-card p  { font-size:.86rem; color:rgba(255,255,255,.54); line-height:1.7; }
+.eng-note {
+    margin-top:36px;
+    background:rgba(255,107,69,.1);
+    border:1px solid rgba(255,107,69,.22);
+    border-radius:14px; padding:20px 24px;
+    font-size:.9rem; color:rgba(255,255,255,.7); line-height:1.7;
+}
+.eng-note strong { color:var(--coral-light); }
+
+/* ─────────────────────────────────────────────
+   TESTIMONIALS CAROUSEL
+───────────────────────────────────────────── */
+.testimonials { background:var(--white); padding:var(--sp); }
+.testimonials-intro { margin-bottom:44px; }
+
+.c-card {
+    background:var(--off-white); border:1px solid var(--border);
+    border-radius:20px; padding:36px 40px;
+    display:flex; gap:28px; align-items:flex-start;
+}
+.c-avatar {
+    flex-shrink:0; width:72px; height:72px;
+    border-radius:50%; object-fit:cover;
+    border:3px solid var(--coral-pale);
+}
+.c-body { flex:1; }
+.c-quote {
+    font-size:1rem; color:var(--navy); line-height:1.78; margin-bottom:18px;
+    position:relative; padding-top:2.4rem;
+}
+.c-quote::before {
+    content:'\201C';
+    font-family:var(--fd); font-size:3rem; line-height:1;
+    color:var(--coral);
+    position:absolute; top:0; left:0;
+}
+.c-cite { font-size:.875rem; font-weight:600; color:var(--navy); }
+.c-cite span { font-weight:400; color:var(--slate-light); }
+
+/* ─────────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────────── */
+.about { background:var(--off-white); padding:var(--sp); }
+.about-inner {
+    display:grid; grid-template-columns:auto 1fr;
+    gap:56px; align-items:start;
+}
+.about-portrait {
+    width:180px; height:180px; border-radius:20px;
+    object-fit:cover; box-shadow:0 8px 32px rgba(26,44,82,.15);
+}
+.about-name { font-family:var(--fd); font-size:2.3rem; color:var(--navy); margin-bottom:4px; }
+.about-role { font-size:1rem; font-weight:500; color:var(--coral); margin-bottom:20px; letter-spacing:.02em; }
+.about-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--coral-pale); border:1px solid rgba(255,107,69,.2);
+    border-radius:8px; padding:8px 14px;
+    font-size:.8rem; font-weight:600; color:var(--coral);
+    margin-bottom:22px;
+}
+.about-bio { font-size:.98rem; color:var(--slate); line-height:1.82; margin-bottom:14px; }
+.about-links { display:flex; gap:14px; flex-wrap:wrap; margin-top:6px; }
+.about-link {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.9rem; font-weight:600; color:var(--navy);
+    border-bottom:2px solid var(--coral); padding-bottom:2px;
+    transition:color .2s;
+}
+.about-link:hover { color:var(--coral); }
+
+/* ─────────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────────── */
+.contact { background:var(--navy-deep); padding:var(--sp); text-align:center; }
+.contact .section-lbl  { color:var(--coral-light); }
+.contact .section-title { color:#fff; }
+.contact-lead { font-size:1.05rem; color:rgba(255,255,255,.62); line-height:1.8; margin:0 auto 36px; max-width:520px; }
+.contact-ctas { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.contact-info {
+    display:flex; gap:36px; justify-content:center; flex-wrap:wrap;
+    margin-top:44px; padding-top:36px; border-top:1px solid rgba(255,255,255,.08);
+}
+.contact-item { display:flex; align-items:center; gap:10px; font-size:.88rem; color:rgba(255,255,255,.5); }
+.contact-item i { color:var(--coral); }
+.contact-item a { color:rgba(255,255,255,.5); transition:color .2s; }
+.contact-item a:hover { color:var(--coral-light); }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+    background:var(--navy-deep);
+    border-top:1px solid rgba(255,255,255,.06);
+    padding:18px clamp(20px,8%,120px);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+}
+footer p { font-size:.8rem; color:rgba(255,255,255,.3); }
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────── */
+.rv { opacity:0; transform:translateY(26px); transition:opacity .6s ease, transform .6s ease; }
+.rv.vis { opacity:1; transform:none; }
+.rv-1 { transition-delay:.08s; }
+.rv-2 { transition-delay:.18s; }
+.rv-3 { transition-delay:.28s; }
+.rv-4 { transition-delay:.38s; }
+.rv-5 { transition-delay:.48s; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE & MOBILE CAROUSELS
+───────────────────────────────────────────── */
+@media (max-width:1200px) {
+    .nav-tagline {
+        font-size: .8rem;
+        letter-spacing: .04em;
+    }
+}
+
+@media (max-width:1050px) {
+    .nav-tagline-wrap {
+        display: none;
+    }
+}
+
+@media (max-width:1024px) {
+    .ch-grid  { grid-template-columns:1fr 1fr; }
+    .eng-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:900px) {
+    .hero { grid-template-columns:1fr; padding-top:48px; }
+    .hero-visual { display:none; }
+    .nav-tagline-wrap { display:none; }
+}
+
+@media (max-width:768px) {
+    .nav-links a:not(.nav-cta) { display:none; }
+    .about-inner { grid-template-columns:1fr; gap:28px; }
+    .about-portrait { width:120px; height:120px; }
+
+    /* Convert grid systems into flex tracks for mobile carousels */
+    .ch-grid, .eng-grid {
+        display: flex;
+        transition: transform .52s cubic-bezier(.4,0,.2,1);
+        will-change: transform;
+    }
+    
+    .ch-grid .ch-card, .eng-grid .eng-card {
+        flex: 0 0 100%;
+    }
+
+    /* Target specific wrappers on mobile to hide structural grid overrides */
+    .mobile-carousel-container {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Bring overlay arrows into tighter margins for mobile constraints */
+    .c-btn.prev { left: 1%; }
+    .c-btn.next { right: 1%; }
+    .c-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+}
+
+@media (max-width:640px) {
+    .c-viewport { padding:0 4%; }
+    .c-card { flex-direction:column; gap:16px; padding:24px 20px; }
+}
+    </style>
 </head>
 <body>
 
-    <nav class="floating-nav">
-        <div class="logo">
-            <img src="./img/logo_rounded.png" alt="conor.ai logo"> 
-        </div>
-        <div class="center-text">
-            Data, Analytics & AI
-        </div>
-        <div class="nav-menu">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="contact-btn">Contact</a>
-        </div>
-    </nav>
-    <header>
-        <div class="header-content">
-            <h1>
-                 <span class="highlight">Effective</span> Solutions
-                <br>
-                for <span class="highlight">Modern</span> Challenges.
-            </h1> 
-            
-            <p>
-                Expert consulting, contracting, and advisory services.
-                <!-- <br> -->
-                <span class="large-break"></span>
-                Turn complex Data, Analytics, and AI challenges into high-value business solutions.
-            </p>
-            
-            <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="cta-btn">Discuss Opportunities Today</a>
-        </div>
-        
-        <div class="header-visual">
-            </div>
-    </header>
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav class="nav" id="main-nav">
 
-    <section id="services"> 
-        <h2>Services Offered</h2>
-        <p>We understand that everyone is at different stages of their Data, Analytics & AI journeys. 
-            <!-- <br> -->
-            <span class="large-break"></span>
-            Whether you're taking your first steps or have been blazing a trail, we meet you where you are and get you where you're going.
+    <div class="nav-logo-wrap">
+        <a href="#" class="nav-logo">
+            <img src="./img/logo_rounded.png" alt="conor.ai">
+        </a>
+    </div>
+
+    <div class="nav-tagline-wrap">
+        <span class="nav-tagline">
+            Data&nbsp;<span class="nav-dot">&middot;</span>&nbsp;Analytics&nbsp;<span class="nav-dot">&middot;</span>&nbsp;AI
+        </span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#opportunities">Opportunities</a>
+        <a href="#engagement">Work Together</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#about">About</a>
+        <a href="mailto:conor@conor.ai?subject=Enquiry from conor.ai" class="nav-cta">
+            Get in Touch
+        </a>
+    </div>
+
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-bg">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0"   y1="175" x2="1200" y2="175" class="hg"/>
+            <line x1="0"   y1="350" x2="1200" y2="350" class="hg"/>
+            <line x1="0"   y1="525" x2="1200" y2="525" class="hg"/>
+            <line x1="300" y1="0"   x2="300"  y2="700" class="hg"/>
+            <line x1="600" y1="0"   x2="600"  y2="700" class="hg"/>
+            <line x1="900" y1="0"   x2="900"  y2="700" class="hg"/>
+            <path d="M200,220 Q480,110 740,310 Q900,410 1120,240" class="hc"/>
+            <path d="M80,500  Q320,360 620,460 Q860,550 1120,390" class="hc hc2"/>
+            <circle cx="240"  cy="220" r="4.5" class="hn"/>
+            <circle cx="740"  cy="310" r="4.5" class="hn"/>
+            <circle cx="620"  cy="460" r="4.5" class="hn"/>
+            <circle cx="1060" cy="270" r="7"   class="hn"/>
+            <circle cx="1060" cy="270" r="0"   class="hp"/>
+            <circle cx="1060" cy="270" r="0"   class="hp hp2"/>
+            <circle cx="1060" cy="270" r="0"   class="hp hp3"/>
+            <g class="hfd"><circle cx="860" cy="140" r="3"  fill="rgba(255,107,69,.38)"/></g>
+            <g class="hfd"><circle cx="410" cy="590" r="2"  fill="rgba(255,107,69,.28)"/></g>
+            <g class="hfd"><circle cx="990" cy="560" r="3.5" fill="rgba(255,107,69,.2)"/></g>
+            <polygon points="930,75 960,58 990,75 990,110 960,127 930,110" fill="none" stroke="rgba(255,107,69,.14)" stroke-width="1"/>
+            <polygon points="120,360 145,347 170,360 170,385 145,398 120,385" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+        </svg>
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <div class="hero-dot"></div>
+            Data, Analytics &amp; AI Consulting
+        </div>
+        <h1>Turning Data &amp; AI<br>Complexity Into<br><em>Real Outcomes</em></h1>
+        <p class="hero-sub">
+            Advisory, contract, and hands-on consulting from C-suite strategy through to implementation and code.
+            Whether you need executive guidance, embedded leadership,
+            specialist delivery, or a combination of these, engagements are shaped for you.
         </p>
-        <div class="services">
-            <div class="service-card">
-                <!-- <img src="img/strategy.png" alt="Strategy and Governance Icon"> -->
-                <img src="img/arrow2.png" alt="Strategy and Governance Icon">
-                <h3>Strategy, Leadership, Structure, and Governance</h3>
-                <p>Lay or reinforce the groundwork for your organisation to effectively leverage Data and AI in the modern era.
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <!-- <img src="img/ai.png" alt="Machine Learning Icon"> -->
-                <img src="img/ai2.png" alt="Machine Learning Icon">
-                <h3>AI & Machine Learning Solutions</h3>
-                <p>
-                    Deliver value effectively using AI and Machine Learning. 
-                    Tuned to your business needs, from ideation to delivery, from enterprise roll-out to niche solutions.
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <!-- <img src="img/customer.png" alt="Data Science Icon"> -->
-                <img src="img/graph3.png" alt="Data Science Icon">
-                <h3>Data Science and Analytics</h3>
-                <p>
-                    Optimise your performance with advanced analytics. 
-                    Specialising in Marketing, E-commerce, and Contact Centre domains.
-                </p>
-            </div>
-            
+        <div class="hero-ctas">
+            <a href="mailto:conor@conor.ai?subject=Enquiry from conor.ai" class="btn-primary">
+                <i class="fas fa-envelope"></i> Discuss an Engagement
+            </a>
+            <a href="#engagement" class="btn-ghost">
+                How we can work together <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </div>
 
-            <!-- <div class="service-card">
-                <img src="img/customer.png" alt="Marketing Analytics">
-                <h3>Customer & Marketing Analytics</h3>
-                <p>Predict customer behavior, optimise campaigns, and boost retention with advanced data science techniques.</p>
+    <div class="hero-visual">
+        <div class="hero-cards">
+            <div class="hcard">
+                <div class="hcard-lbl">Depth of engagement</div>
+                <div class="hcard-val">C-suite to hands-on</div>
+                <div class="hcard-sub">Strategy, architecture, team leadership, or <span class="hcard-accent">direct implementation</span> — wherever the work needs to happen.</div>
             </div>
-            <div class="service-card">
-                <img src="img/ecommerce.png" alt="E-commerce Analytics">
-                <h3>E-commerce & Product Analytics</h3>
-                <p>Optimise pricing, predict demand, and improve customer experiences using predictive analytics and machine learning.</p>
+            <div class="hcard">
+                <div class="hcard-lbl">What good looks like</div>
+                <div class="hcard-val">Value and capability</div>
+                <div class="hcard-sub">Delivering near-term outcomes while building <span class="hcard-accent">lasting capability</span>, rather than  trading one for the other.</div>
             </div>
-            <div class="service-card">
-                <img src="img/call-centre.png" alt="Call Center Analytics">
-                <h3>Call Center Analytics</h3>
-                <p>Enhance call center performance by predicting call volumes, improving routing, and analysing sentiment using AI-powered solutions.</p>
+            <div class="hcard">
+                <div class="hcard-lbl">Industry experience</div>
+                <div class="hcard-val">10+ years, 6 sectors</div>
+                <div class="hcard-sub">Organisations large and small — domestic, international, and <span class="hcard-accent">multi-national</span>.</div>
             </div>
-            <div class="service-card">
-                <img src="img/sales.png" alt="Sales Optimisation">
-                <h3>Sales Optimisation</h3>
-                <p>Increase sales with lead prioritisation, sales forecasting, and upselling opportunities through machine learning models.</p>
-            </div>
-            <div class="service-card">
-                <img src="img/strategy.png" alt="Strategy and Leadership">
-                <h3>Executive Strategy & Leadership</h3>
-                <p>AI & data strategy, executive & board training, data & analytics team development, business process optimisation.</p>
-            </div>
-            <div class="service-card">
-                <img src="img/ai.png" alt="AI & Machine Learning Solutions">
-                <h3>AI & Machine Learning Solutions</h3>
-                <p>Implement AI systems to automate processes, enhance decision-making, and unlock business efficiencies.</p>
-            </div> -->
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="testimonials" id="testimonials"> 
-        <h2>Selected Testimonials</h2>
-        <div class="testimonial-card">
-            <img src="img/rob.jpeg" alt="Client 1">
-            <div>
-                <p>"Conor was instrumental in bringing a high-value, LLM-based app from idea to production at BHP. 
-                    Despite being unfamiliar with the field of equipment maintenance, he rapidly grasped the domain and 
-                    helped design and deliver a clever solution balancing strategic goals with pragmatic realities.</p>
-                <p>Conor's strong attention to detail and value-bias through the delivery phase helped drive an efficient, 
-                    effective solution that will save us years of manual effort into the future. He was a pleasure to work with 
-                    and I value his guidance and insight in the practical application of AI."</p>
-                <cite>- Rob Holmes, Principal for New Technologies at BHP</cite>
-            </div>
+<!-- ═══════════════════════════════════════════
+     INDUSTRY LOGOS
+════════════════════════════════════════════ -->
+<!-- BRANDS MARQUEE -->
+<div class="brands">
+    <p class="brands-lbl">Experience Across Industry</p>
+    <div class="brands-marquee">
+        <!-- Track 1 -->
+        <div class="brands-track">
+            <img src="./img/brand_logos/bhp.jpg" alt="BHP">
+            <img src="./img/brand_logos/ctm.jpg" alt="Compare The Market">
+            <img src="./img/brand_logos/fctg.jpg" alt="Flight Centre Travel Group">
+            <img src="./img/brand_logos/mastercard.jpg" alt="Mastercard">
+            <img src="./img/brand_logos/clp.png" alt="CLP Power Hong Kong">
+            <img src="./img/brand_logos/swm.jpg" alt="Seven West Media">
+            <img src="./img/brand_logos/decoded.jpg" alt="Decoded">
         </div>
-        <div class="testimonial-card">
-            <img src="img/oli.jpeg" alt="Client 2">
-            <div>
-                <p>"Conor supported myself and the SEO team on many occasions to separate the signal from the noise. 
-                    His careful analysis of our data, along with the attention he gave to fully understand what the data actually meant, 
-                    led to strategic insights that were built upon to great commercial success."</p>
-                <cite>- Oliver Braithwaite, Head of SEO at Compare The Market</cite>
-            </div>
+        <!-- Track 2 (Exact Duplicate for Seamless Looping) -->
+        <div class="brands-track" aria-hidden="true">
+            <img src="./img/brand_logos/bhp.jpg" alt="BHP">
+            <img src="./img/brand_logos/ctm.jpg" alt="Compare The Market">
+            <img src="./img/brand_logos/fctg.jpg" alt="Flight Centre Travel Group">
+            <img src="./img/brand_logos/mastercard.jpg" alt="Mastercard">
+            <img src="./img/brand_logos/clp.png" alt="CLP Power Hong Kong">
+            <img src="./img/brand_logos/swm.jpg" alt="Seven West Media">
+            <img src="./img/brand_logos/decoded.jpg" alt="Decoded">
         </div>
-        <div class="testimonial-card">
-            <img src="img/bex.jpeg" alt="Client 3">
-            <div>
-                <p>"Conor advised on and designed an audience segmentation study for Pacific. 
-                    He is excellent at distilling down a vast list of requirements and expectations into the core objectives and prioritising accordingly. 
-                    I loved the fact that Conor would take extra time to explain his approach to modelling and give context behind his decisions. 
-                    On top of that he is a genuine delight to have around!"</p>
-                <cite>- Rebecca Alexander-Head, Director of Strategy and Insights at Seven West Media</cite>
-            </div>
-        </div>
-    </section>
+    </div>
+</div>
 
-    <section id="about">
-        <img src="img/about.jpeg" alt="Conor">
-        <div>
-            <h2>Conor O'Neill</h2>
-            <h3>Executive Consultant - Data, Analytics & AI</h3>
-            <!-- <h3>Founder | Principal Consultant</h3> -->
-            <p>
-                Conor is a seasoned data, analytics, and AI leader with over a decade of experience 
-                across financial services, e-commerce, travel, mining, and media industries. 
-                Specialising in advanced analytics strategy and execution across marketing, product, and call centre domains, 
-                he helps organisations make data-driven decisions and deliver impactful, growth-driving solutions.
-            </p>
-            <p>
-                Recognised as a Global Top 100 Data & Analytics Leader by Corinium in 2023, 
-                Conor is also a frequent speaker at technology leadership conferences and is committed to delivering actionable, 
-                real-world results for his clients.
-            </p>
-            <p><b>Connect on LinkedIn:</b> <a href="https://www.linkedin.com/in/conoroneill1/">linkedin.com/in/conoroneill1</a></p>
-            <!-- <p>
-                Conor is a seasoned data, analytics, and AI leader with over a decade of experience providing real value to 
-                organisations from multinationals to startups, across financial services, e-commerce, travel, mining, and media industries. 
-            </p>
-            <p>
-                
-                
-                Specialising in advanced analytics strategy and execution across marketing, product, and call centre domains, 
-                he helps organisations make data-driven decisions and deliver impactful, growth-driving solutions.
-            </p>
-            <p>
-                Recognised as a Global Top 100 Data & Analytics Leader by Corinium in 2023, Conor is also a frequent speaker 
-                at technology leadership conferences, with a clear and to-the-point communication style 
-                and is committed to delivering actionable, real-world results for his clients.
-            </p>
-            <p>
-                <b>Connect on LinkedIn:</b> <a href="https://www.linkedin.com/in/conoroneill1/">linkedin.com/in/conoroneill1</a>
-            </p> -->
-        </div>
-    </section>
-
-    <section class="contact-section" id="contact"> 
-        <h2>Contact Me</h2>
-        <p>Whether you're ready unlock value through data or just want to understand what's possible, let's talk!</p>
-        
-        <a href="mailto:conor@conor.ai?subject=Enquiry from Website" class="contact-button">Get in Touch</a>
+<!-- ═══════════════════════════════════════════
+     OPPORTUNITIES
+════════════════════════════════════════════ -->
+<section class="opportunities" id="opportunities">
+    <div class="opportunities-intro rv">
+        <span class="section-lbl">Where I can help</span>
+        <h2 class="section-title">Delivering Outcomes Across the<br>Data, Analytics &amp; AI Lifecycle</h2>
+        <p class="section-lead">
+            Across every industry and every level of data maturity, the same categories of work tend to define
+            whether organisations succeed with data and AI. The specifics differ, but the patterns are often the same.
+        </p>
+    </div>
     
-        <div class="contact-info">
-            <div>
-                <i class="fas fa-envelope"></i>
-                <p><a href="mailto:conor@conor.ai?subject=Enquiry from Website">conor@conor.ai</a></p>
-            </div>
-            <div>
-                <i class="fas fa-globe"></i>
-                <p>Brisbane, Australia</p>
+    <div class="mobile-carousel-container c-wrapper">
+        <button class="c-btn prev" id="opp-prev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <div class="c-outer">
+            <div class="c-viewport">
+                <div class="ch-grid" id="opp-track">
+
+                    <!-- CARD 1 -->
+                    <div class="c-slide">
+                        <div class="ch-card rv rv-1">
+                            <div class="ch-icon"><i class="fas fa-chess"></i></div>
+                            <h3>Strategy, Leadership &amp; Operating Models</h3>
+                            <p>Getting data and AI to deliver value at an organisational level requires more than technology. It requires clarity of strategy, alignment of leadership, and operating models designed for how the work actually flows.</p>
+                            <ul class="ch-list">
+                                <li>Balancing capability building with near-term value delivery</li>
+                                <li>Prioritising initiatives when everything feels urgent</li>
+                                <li>Securing investment and maintaining executive sponsorship</li>
+                                <li>Aligning business and technology teams around shared outcomes</li>
+                                <li>Designing governance frameworks that enable rather than obstruct</li>
+                                <li>Measuring ROI on data and AI investment</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div class="c-slide">
+                        <div class="ch-card rv rv-2">
+                            <div class="ch-icon"><i class="fas fa-chart-bar"></i></div>
+                            <h3>Analytics, Data Science &amp; Decision Making</h3>
+                            <p>Analytics capability spans a wide spectrum, from foundational reporting through to advanced modelling. The challenge is building capability that organisations actually use, and turning insight into action.</p>
+                            <ul class="ch-list">
+                                <li>Enterprise reporting, BI, and analytics adoption</li>
+                                <li>Measurement frameworks and experiment design</li>
+                                <li>A/B testing and statistical analysis at scale</li>
+                                <li>Predictive and prescriptive analytics</li>
+                                <li>Marketing mix modelling and attribution</li>
+                                <li>Customer segmentation and behavioural analytics</li>
+                                <li>Translating analytical outputs into decisions and action</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3 -->
+                    <div class="c-slide">
+                        <div class="ch-card rv rv-3">
+                            <div class="ch-icon"><i class="fas fa-robot"></i></div>
+                            <h3>AI That Delivers Value Beyond Demos</h3>
+                            <p>AI should create measurable business value while appropriately managing governance, risk, privacy, and security. The gap between a compelling proof of concept and a production system that earns trust is where most AI initiatives stall.</p>
+                            <ul class="ch-list">
+                                <li>Identifying high-value use cases and separating hype from opportunity</li>
+                                <li>Building governance, risk, and oversight frameworks for AI</li>
+                                <li>Machine learning — from model design to production deployment</li>
+                                <li>Generative AI integration that solves real problems</li>
+                                <li>Agentic AI: autonomous systems with appropriate human oversight</li>
+                                <li>Scaling solutions that work in pilots to enterprise-wide value</li>
+                                <li>Measuring and communicating AI's business impact</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </section>
+        <button class="c-btn next" id="opp-next" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        <div class="c-dots" id="opp-dots"></div>
+    </div>
+</section>
 
-    <footer>
-        <div>
-            <p>&copy; 2025 Conor O'Neill</p>
+<!-- ═══════════════════════════════════════════
+     ENGAGEMENT MODELS
+════════════════════════════════════════════ -->
+<section class="engagement" id="engagement">
+    <div class="engagement-intro rv">
+        <span class="section-lbl">How we can work together</span>
+        <h2 class="section-title">Flexible Engagement,<br>Serious Outcomes</h2>
+        <p class="section-lead">
+            Engagements are shaped around the work, not a fixed template. Whether you need strategic guidance,
+            embedded leadership, or someone who can architect and build. The right model depends on your context.
+        </p>
+    </div>
+
+    <div class="mobile-carousel-container c-wrapper">
+        <button class="c-btn prev" id="eng-prev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <div class="c-outer">
+            <div class="c-viewport">
+                <div class="eng-grid" id="eng-track">
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-1">
+                            <div class="eng-icon"><i class="fas fa-compass"></i></div>
+                            <h3>Advisory &amp; Executive Support</h3>
+                            <p>Strategic guidance, governance frameworks, roadmap development, and executive-level advisory that helps organisations make better decisions about data and AI investment and direction.</p>
+                        </div>
+                    </div>
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-2">
+                            <div class="eng-icon"><i class="fas fa-sitemap"></i></div>
+                            <h3>Fractional Leadership</h3>
+                            <p>Embedded leadership support for organisations that need senior data and AI capability without a permanent hire, covering strategy, team direction, and stakeholder engagement on a part-time or interim basis.</p>
+                        </div>
+                    </div>
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-3">
+                            <div class="eng-icon"><i class="fas fa-route"></i></div>
+                            <h3>Delivery Leadership</h3>
+                            <p>Leading initiatives from concept to implementation. Scoping, planning, managing stakeholders, and ensuring that projects deliver the outcomes they were designed for, not just technical outputs.</p>
+                        </div>
+                    </div>
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-4">
+                            <div class="eng-icon"><i class="fas fa-code"></i></div>
+                            <h3>Hands-On Specialist Consulting</h3>
+                            <p>Direct implementation, solution design, and coding across analytics, machine learning, generative AI, and agentic AI systems. Comfortable moving between architecture decisions and writing production code.</p>
+                        </div>
+                    </div>
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-5">
+                            <div class="eng-icon"><i class="fas fa-file-contract"></i></div>
+                            <h3>Contract &amp; Project Engagements</h3>
+                            <p>Available for fixed-term contracts, project-based engagements, and specialist support. Equally suited to short, focused interventions and longer-term embedded roles.</p>
+                        </div>
+                    </div>
+                    <div class="c-slide">
+                        <div class="eng-card rv rv-1" style="background:rgba(255,107,69,.08);border-color:rgba(255,107,69,.2);">
+                            <div class="eng-icon"><i class="fas fa-arrows-up-down-left-right"></i></div>
+                            <h3>From the Boardroom to the Build</h3>
+                            <p>The best work often needs more than one lane. Many engagements span multiple modes — strategic one week, hands-on the next. No translation needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+        <button class="c-btn next" id="eng-next" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        <div class="c-dots" id="eng-dots"></div>
+    </div>
 
+    <div class="eng-note rv">
+        <strong>Not sure which model fits?</strong> Most engagements start with a conversation about the challenge, not the contract structure. Get in touch and we can work out what makes sense from there.
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+    <div class="testimonials-intro rv">
+        <span class="section-lbl">Testimonials</span>
+        <h2 class="section-title">What People Say</h2>
+    </div>
+
+    <div class="c-wrapper">
+        <button class="c-btn prev" id="c-prev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <div class="c-outer">
+            <div class="c-viewport">
+                <div class="c-track" id="c-track">
+                    <!-- Slides injected by JS from data below -->
+                </div>
+            </div>
+        </div>
+        <button class="c-btn next" id="c-next" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        <div class="c-dots" id="c-dots"></div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════ -->
+<section class="about" id="about">
+    <div class="about-inner">
+        <img src="img/about.jpeg" alt="Conor O'Neill" class="about-portrait rv">
+        <div class="rv rv-1">
+            <h2 class="about-name">Conor O'Neill</h2>
+            <p class="about-role">Executive Consultant — Data, Analytics &amp; AI</p>
+            <div class="about-badge"><i class="fas fa-award"></i> Global Top 100 Data &amp; Analytics Leader — Corinium, 2023</div>
+            <p class="about-bio">
+                Conor O'Neill is a data, analytics, and AI leader who works at the intersection of strategy, technology, and delivery. Over the past decade he has helped organisations across financial services, travel, e-commerce, mining, media, and scientific research turn complex data and AI initiatives into measurable business outcomes.
+            </p>
+            <p class="about-bio">
+                What distinguishes his approach is the ability to move comfortably between executive discussions and implementation detail. Whether shaping strategy with senior leaders, guiding teams through delivery, or working directly with data and code, the focus remains the same: creating practical outcomes that organisations can sustain and build upon.
+            </p>
+            <p class="about-bio">
+                A recognised industry leader and conference speaker, Conor combines deep technical expertise with a strong understanding of organisational change, helping businesses navigate the opportunities and realities of data and AI adoption.
+            </p>
+            <div class="about-links">
+                <a href="https://www.linkedin.com/in/conoroneill1/" target="_blank" rel="noopener" class="about-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:conor@conor.ai?subject=Enquiry from conor.ai" class="about-link">
+                    <i class="fas fa-envelope"></i> conor@conor.ai
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+    <span class="section-lbl">Let's talk</span>
+    <h2 class="section-title" style="color:#fff;">Ready to make progress?</h2>
+    <p class="contact-lead">
+        Whether you're navigating a specific challenge, looking to build capability, or working out what's possible, a conversation is the right place to start.
+    </p>
+    <div class="contact-ctas">
+        <a href="mailto:conor@conor.ai?subject=Enquiry from conor.ai" class="btn-primary">
+            <i class="fas fa-envelope"></i> Send an Enquiry
+        </a>
+        <a href="https://www.linkedin.com/in/conoroneill1/" target="_blank" rel="noopener" class="btn-outline" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);">
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+        </a>
+    </div>
+    <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:conor@conor.ai">conor@conor.ai</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Brisbane, Australia</span></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/conoroneill1/" target="_blank" rel="noopener">linkedin.com/in/conoroneill1</a></div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Conor O'Neill</p>
+    <p>conor.ai</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+/* ── Testimonial data ─────────────────────── */
+const SLIDES = [
+    {
+        img:   'img/rob.jpeg',
+        alt:   'Rob Holmes',
+        quote: 'Conor was instrumental in bringing a high-value, LLM-based app from idea to production at BHP. Despite being unfamiliar with the field of equipment maintenance, he rapidly grasped the domain and helped design and deliver a clever solution balancing strategic goals with pragmatic realities. Conor\'s strong attention to detail and value-bias through the delivery phase helped drive an efficient, effective solution that will save us years of manual effort into the future. He was a pleasure to work with and I value his guidance and insight in the practical application of AI.',
+        cite:  'Rob Holmes',
+        role:  'Principal for New Technologies, BHP'
+    },
+    {
+        img:   'img/oli.jpeg',
+        alt:   'Oliver Braithwaite',
+        quote: 'Conor supported myself and the SEO team on many occasions to separate the signal from the noise. His careful analysis of our data, along with the attention he gave to fully understand what the data actually meant, led to strategic insights that were built upon to great commercial success.',
+        cite:  'Oliver Braithwaite',
+        role:  'Head of SEO, Compare The Market'
+    },
+    {
+        img:   'img/bex.jpeg',
+        alt:   'Rebecca Alexander-Head',
+        quote: 'Conor advised on and designed an audience segmentation study for Pacific. He is excellent at distilling down a vast list of requirements and expectations into the core objectives and prioritising accordingly. I loved the fact that Conor would take extra time to explain his approach to modelling and give context behind his decisions. On top of that he is a genuine delight to have around!',
+        cite:  'Rebecca Alexander-Head',
+        role:  'Director of Strategy and Insights, Seven West Media'
+    }
+];
+
+/* ── Build Testimonial Carousel ───────────────────────── */
+(function () {
+    const track  = document.getElementById('c-track');
+    const dotsEl = document.getElementById('c-dots');
+    const N      = SLIDES.length;
+
+    /* Build real slides */
+    SLIDES.forEach(s => {
+        const slide = document.createElement('div');
+        slide.className = 'c-slide';
+        slide.innerHTML = `
+            <div class="c-card">
+                <img src="${s.img}" alt="${s.alt}" class="c-avatar">
+                <div class="c-body">
+                    <p class="c-quote">${s.quote}</p>
+                    <div class="c-cite">${s.cite} <span>— ${s.role}</span></div>
+                </div>
+            </div>`;
+        track.appendChild(slide);
+    });
+
+    /* Clone first and last for seamless infinite loop */
+    const firstClone = track.children[0].cloneNode(true);
+    const lastClone  = track.children[N - 1].cloneNode(true);
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden', 'true');
+    track.appendChild(firstClone);    /* clone of first at end   */
+    track.insertBefore(lastClone, track.children[0]); /* clone of last at start */
+
+    /* Dots */
+    const dots = [];
+    for (let i = 0; i < N; i++) {
+        const d = document.createElement('div');
+        d.className = 'c-dot' + (i === 0 ? ' on' : '');
+        d.addEventListener('click', () => { goTo(i + 1); resetAuto(); });
+        dotsEl.appendChild(d);
+        dots.push(d);
+    }
+
+    /* State: position 0 = lastClone, 1..N = real, N+1 = firstClone */
+    let pos = 1;   /* start on first real slide */
+    let busy = false;
+
+    function setPos(p, animate) {
+        track.classList.toggle('snap', !animate);
+        track.style.transform = `translateX(-${p * 100}%)`;
+        if (!animate) {
+            track.getBoundingClientRect();
+            track.classList.remove('snap');
+        }
+    }
+
+    function updateDots(p) {
+        const idx = ((p - 1) % N + N) % N;
+        dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    }
+
+    setPos(pos, false);
+    updateDots(pos);
+
+    function goTo(p, animate = true) {
+        if (busy) return;
+        busy = true;
+        pos = p;
+        setPos(pos, animate);
+        updateDots(pos);
+    }
+
+    track.addEventListener('transitionend', () => {
+        busy = false;
+        if (pos === 0) {
+            setPos(N, false);
+            pos = N;
+            updateDots(pos);
+        } else if (pos === N + 1) {
+            setPos(1, false);
+            pos = 1;
+            updateDots(pos);
+        }
+    });
+
+    function next() { goTo(pos + 1); }
+    function prev() { goTo(pos - 1); }
+
+    let timer = setInterval(next, 5500);
+    function resetAuto() { clearInterval(timer); timer = setInterval(next, 5500); }
+
+    document.getElementById('c-next').addEventListener('click', () => { next(); resetAuto(); });
+    document.getElementById('c-prev').addEventListener('click', () => { prev(); resetAuto(); });
+
+    /* Touch/swipe */
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 44) { dx < 0 ? next() : prev(); resetAuto(); }
+    }, { passive: true });
+})();
+
+/* ── Standard Responsive Mobile Carousels Engine ────────────────── */
+function setupResponsiveCarousel(config) {
+    const track = document.getElementById(config.trackId);
+    const dotsContainer = document.getElementById(config.dotsId);
+    const prevBtn = document.getElementById(config.prevId);
+    const nextBtn = document.getElementById(config.nextId);
+    const totalSlides = track.children.length;
+    
+    let currentIndex = 0;
+    let isMobile = window.innerWidth <= 768;
+    let dots = [];
+
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        dots = [];
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'c-dot' + (i === 0 ? ' on' : '');
+            dot.addEventListener('click', () => {
+                if(!isMobile) return;
+                currentIndex = i;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        }
+    }
+
+    function updateCarousel() {
+        if (isMobile) {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('on', i === currentIndex));
+            prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+            nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'flex';
+            dotsContainer.style.display = 'flex';
+        } else {
+            track.style.transform = 'none';
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            dotsContainer.style.display = 'none';
+        }
+    }
+
+    // Event Handlers
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalSlides - 1) { currentIndex++; updateCarousel(); }
+    });
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) { currentIndex--; updateCarousel(); }
+    });
+
+    /* Touch Swiping support for mobile */
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        if (!isMobile) return;
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 45) {
+            if (diff > 0 && currentIndex < totalSlides - 1) { currentIndex++; } 
+            else if (diff < 0 && currentIndex > 0) { currentIndex--; }
+            updateCarousel();
+        }
+    }, { passive: true });
+
+    // Handle viewport changes dynamically
+    window.addEventListener('resize', () => {
+        const currentMode = window.innerWidth <= 768;
+        if (currentMode !== isMobile) {
+            isMobile = currentMode;
+            currentIndex = 0; // Reset index state gracefully
+            updateCarousel();
+        }
+    });
+
+    // Init
+    buildDots();
+    updateCarousel();
+}
+
+// Initializing the two non-infinite grid carousels on mobile lifecycle
+setupResponsiveCarousel({
+    trackId: 'opp-track',
+    dotsId: 'opp-dots',
+    prevId: 'opp-prev',
+    nextId: 'opp-next'
+});
+
+setupResponsiveCarousel({
+    trackId: 'eng-track',
+    dotsId: 'eng-dots',
+    prevId: 'eng-prev',
+    nextId: 'eng-next'
+});
+
+/* ── Nav scroll shadow ────────────────────── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+/* ── Scroll reveal ────────────────────────── */
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); rvObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+rvEls.forEach(el => rvObs.observe(el));
+</script>
 </body>
 </html>
